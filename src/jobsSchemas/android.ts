@@ -1,7 +1,11 @@
-import Joi from 'joi';
+import Joi from "joi";
 
-import { ANDROID_BUILD_MODES, ANDROID_BUILD_TYPES, PLATFORMS } from 'turtle/constants';
-import baseJobSchema from 'turtle/jobsSchemas/base';
+import {
+  ANDROID_BUILD_MODES,
+  ANDROID_BUILD_TYPES,
+  PLATFORMS,
+} from "turtle/constants";
+import baseJobSchema from "turtle/jobsSchemas/base";
 
 export default baseJobSchema.concat(
   Joi.object().keys({
@@ -13,9 +17,13 @@ export default baseJobSchema.concat(
       keystore: Joi.string(),
     }),
     config: Joi.object().keys({
-      buildMode: Joi.string().valid(Object.values(ANDROID_BUILD_MODES)).default(ANDROID_BUILD_MODES.RELEASE),
-      buildType: Joi.string().valid(Object.values(ANDROID_BUILD_TYPES)).default(ANDROID_BUILD_TYPES.APK),
+      buildMode: Joi.string()
+        .valid(Object.values(ANDROID_BUILD_MODES))
+        .default(ANDROID_BUILD_MODES.ANDROIDTEST),
+      buildType: Joi.string()
+        .valid(Object.values(ANDROID_BUILD_TYPES))
+        .default(ANDROID_BUILD_TYPES.APK),
       gradleArgs: Joi.array().items(Joi.string()),
     }),
-  }),
+  })
 );

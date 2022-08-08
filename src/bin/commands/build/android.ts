@@ -27,7 +27,7 @@ export default (program: any, setCommonCommandOptions: any) => {
       "-m --mode <build>",
       "type of build: debug|release|androidtest",
       /^(debug|release|androidtest)$/i,
-      "release"
+      "androidtest"
     )
     .option(
       "--gradle-args <gradle-args>",
